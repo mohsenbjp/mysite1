@@ -23,7 +23,7 @@ urlpatterns = [
     path('robots.txt',include('robots.urls')),
     path('accounts/', include('allauth.urls')),
     re_path(r"^.*",index),
-
+    
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
