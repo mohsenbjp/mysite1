@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'blog',
     'django_summernote',
 
+    "compressor",
+
 ]
 
 
@@ -79,6 +81,13 @@ SUMMERNOTE_CONFIG = {
 
 
 MIDDLEWARE = [
+
+    'django.middleware.gzip.GZipMiddleware',
+    'htmlmin.middleware.HtmlMinifyMiddleware',
+    'htmlmin.middleware.MarkRequestMiddleware',
+
+
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -129,6 +138,12 @@ DATABASES = {
     }
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:8000',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -174,6 +189,31 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+
+    # Add this
+    'compressor.finders.CompressorFinder',
+)
+
+
+# Compressor and minifier config
+COMPRESS_ENABLED = True
+COMPRESS_CSS_HASHING_METHOD = 'content'
+COMPRESS_FILTERS = {
+    'css':[
+        'compressor.filters.css_default.CssAbsoluteFilter',
+        'compressor.filters.cssmin.rCSSMinFilter',
+    ],
+    'js':[
+        'compressor.filters.jsmin.JSMinFilter',
+    ]
+}
+HTML_MINIFY = True
+KEEP_COMMENTS_ON_MINIFYING = True
+
 
 
 
