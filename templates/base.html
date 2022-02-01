@@ -10,20 +10,26 @@
   <!-- Favicon-->
   <link rel="shortcut icon" href="img/fav.png">
   <!-- Author Meta -->
-  <meta name="author" content="colorlib">
+  <meta name="author" content="mohsen bjp">
   <!-- Meta Description -->
-  <meta name="description" content="">
+  <meta name="description" content="an awesome website for assisting visitors around the world to choice easier!">
   <!-- Meta Keyword -->
   <meta name="keywords" content="">
   <!-- meta character set -->
   <meta charset="UTF-8">
   <!-- Site Title -->
-  <title>Travel</title>
+  <title>{% block title %}base{% endblock title %}</title>
+  <!-- <title>Travel</title> -->
+  <!-- meta robot tags -->
+  <meta name=”robots” content=”noindex, nofollow”>
 
   
-    <!--
-    CSS
-    ============================================= -->
+    
+
+  
+
+  
+    <!-- ==================================  CSS ============================================= -->
     {% compress css %}
     <link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">

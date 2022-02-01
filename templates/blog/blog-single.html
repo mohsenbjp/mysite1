@@ -1,6 +1,7 @@
 	<!DOCTYPE html>
 	{%extends 'base.html'%}
 	{%load static%}
+	{% block title %}blog description page{% endblock title %}
 	{%block content%}
 	{%load blog-tags%}
 			<!-- Start post-content Area -->
@@ -10,11 +11,11 @@
 						<div class="col-lg-8 posts-list">
 							<div class="single-post row">
 								<div class="col-lg-12">
-									<div class="feature-img">
-										<img class="img-fluid" src="{{post.image.url}}" alt="">
+									<div itemscope class="feature-img">
+										<img class="img-fluid" itemprop="url" src="{{post.image.url}}" alt="no image is available">
 									</div>
 								</div>
-								<div class="col-lg-3  col-md-3 meta-details">
+								<div itemscope itemprop="author" itemtype="https://schema.org/category class="col-lg-3  col-md-3 meta-details">
 									<ul class="tags">
 										{%for cat in post.category.all%}
 										<li><a href="{%url 'blog:category' cat_name=cat.name%}">{{cat.name}}</a></li>
@@ -53,17 +54,17 @@
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
 										<div class="thumb">
-											<a href="#"><img class="img-fluid" src="{% static 'img/blog/prev.jpg' %}" alt=""></a>
+											<a href="#"><img class="img-fluid" src="{% static 'img/blog/prev.jpg' %}" alt="previous"></a>
 										</div>
 										<div class="arrow">
 											<a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
 										</div>
-										<div class="detials">
+										<div itemscope class="detials">
 											<p>Prev Post</p>
 											<a href="#"><h4>Space The Final Frontier</h4></a>
 										</div>
 									</div>
-									<div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+									<div itemscope itemtype="https://schema.org/astrology class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
 										<div class="detials">
 											<p>Next Post</p>
 											<a href="#"><h4>Telescopes 101</h4></a>
@@ -72,7 +73,7 @@
 											<a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
 										</div>
 										<div class="thumb">
-											<a href="#"><img class="img-fluid" src="{% static 'img/blog/next.jpg' %}" alt=""></a>
+											<a href="#"><img class="img-fluid" src="{% static 'img/blog/next.jpg' %}" alt="next"></a>
 										</div>
 									</div>
 								</div>
@@ -86,7 +87,7 @@
                                     <div class="single-comment justify-content-between d-flex">
                                         <div class="user justify-content-between d-flex">
                                             <div class="thumb">
-                                                <img src="{% static 'img/blog/c1.jpg' %}" alt="">
+                                                <img src="{% static 'img/blog/c1.jpg' %}" alt="comment">
                                             </div>
                                             <div class="desc">
                                                 <h5><a href="#">{{comment.name}}</a></h5>
@@ -144,7 +145,7 @@
 
 
 								<div class="single-sidebar-widget user-info-widget">
-									<img src="img/blog/user-info.png" alt="">
+									<img src="img/blog/user-info.png" alt="authors picture">
 									<a href="#"><h4>Charlie Barber</h4></a>
 									<p>
 										Senior blog writer
@@ -163,7 +164,7 @@
 								{%latestpost%}
 
 								<div class="single-sidebar-widget ads-widget">
-									<a href="#"><img class="img-fluid" src="{% static 'img/blog/ads-banner.jpg' %}" alt=""></a>
+									<a href="#"><img class="img-fluid" src="{% static 'img/blog/ads-banner.jpg' %}" alt="best place for advertise"></a>
 								</div>
 
 
@@ -192,7 +193,7 @@
 										You can unsubscribe at any time
 									</p>
 								</div>
-								<div class="single-sidebar-widget tag-cloud-widget">
+								<div itemscope itemtype="https://schema.org/tags class="single-sidebar-widget tag-cloud-widget">
 									<h4 class="tagcloud-title">Tag Clouds</h4>
 									<ul>
 										<li><a href="#">Technology</a></li>

@@ -19,3 +19,6 @@ def contact(request):
             form.save()
     form=ContactForm()
     return render(request,'contact.html',{'form':form})
+
+def maintenance(request):
+    return render(request,'maintenance.html')
