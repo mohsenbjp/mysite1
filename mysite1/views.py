@@ -20,5 +20,5 @@ def contact(request):
     form=ContactForm()
     return render(request,'contact.html',{'form':form})
 
-def maintenance(request):
-    return render(request,'maintenance.html')
+# def maintenance(request):
+#     return render(request,'maintenance.html')
